@@ -1,0 +1,172 @@
+.shapka {
+  height: 7rem;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4rem 0 4rem;
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+}
+
+.p_password {
+  color: red;
+}
+
+.bolezn {
+  background-color: rgb(230, 230, 230);
+  width: 98%;
+  min-height: 98rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  padding: 7rem;
+}
+.bolezn .int_info {
+  width: 20rem;
+  height: 3rem;
+  border: 0.1rem solid black;
+  border-radius: 10rem;
+  font-size: 2.4rem;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.bolezn .int_info::-webkit-outer-spin-button, .bolezn .int_info::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.bolezn .H3_info_user {
+  font-size: 2.4rem;
+}
+.bolezn .p_variant {
+  margin: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  border-radius: 10rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.4rem;
+  border: 0.1rem solid black;
+  white-space: nowrap;
+}
+
+.logo {
+  width: 6rem;
+  height: 6rem;
+}
+
+.App {
+  background-color: black;
+}
+
+.box_login {
+  width: 25rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box_login p {
+  display: block;
+  font-size: 28px;
+}
+
+.vhod_form {
+  margin: 0 auto;
+  margin-top: 20rem;
+  border-radius: 15px;
+  background-color: #fff;
+  width: 40rem;
+  height: 70rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.vhod_form h2 {
+  font-size: 3rem;
+}
+.vhod_form .input__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.vhod_form img {
+  width: 20rem;
+  height: 20rem;
+}
+.vhod_form p {
+  font-size: 2rem;
+  margin: 0 auto;
+}
+.vhod_form .p_pass {
+  margin-top: 3rem;
+}
+.vhod_form input {
+  display: block;
+  border-radius: 10px;
+  width: 35rem;
+  height: 3rem;
+}
+.vhod_form button {
+  background-color: rgba(15, 15, 15, 0);
+  width: 15rem;
+  height: 3rem;
+  border-radius: 15px;
+}
+
+.registr_form {
+  margin: 0 auto;
+  margin-top: 20rem;
+  border-radius: 15px;
+  background-color: #fff;
+  width: 40rem;
+  height: 75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.registr_form h2 {
+  font-size: 3rem;
+}
+.registr_form .input__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.registr_form img {
+  width: 20rem;
+  height: 20rem;
+}
+.registr_form p {
+  font-size: 2rem;
+  margin: 0 auto;
+}
+.registr_form .p_pass {
+  margin-top: 3rem;
+}
+.registr_form input {
+  display: block;
+  border-radius: 10px;
+  width: 35rem;
+  height: 3rem;
+}
+.registr_form button {
+  background-color: rgba(15, 15, 15, 0);
+  width: 15rem;
+  height: 3rem;
+  border-radius: 15px;
+}
+
+.button__otpravit {
+  margin-top: 3rem;
+  width: 20rem;
+  height: 4rem;
+  border-radius: 25px;
+  font-size: 3rem;
+}/*# sourceMappingURL=app.css.map */

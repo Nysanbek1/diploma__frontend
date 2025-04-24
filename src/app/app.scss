@@ -1,0 +1,196 @@
+
+
+.shapka {
+    height: 7rem;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4rem 0 4rem ;
+    align-items: center;
+    border-radius: 0 0 15px 15px;
+}
+.p_password {
+    color: red;
+}
+
+.bolezn {
+    background-color: rgb(230, 230, 230);
+    width: 98%;
+    min-height: 98rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    padding: 7rem;
+    .int_info {
+        width: 20rem;
+        height: 3rem;
+
+        border: 0.1rem solid black;
+        border-radius: 10rem;
+
+        font-size: 2.4rem;
+
+        // Центровка текста
+        text-align: center;
+
+        // Убираем стрелочки у input[type="number"] в некоторых браузерах
+        -moz-appearance: textfield;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+	}
+
+
+    }
+    .H3_info_user {
+        font-size: 2.4rem;
+    }
+    .p_variant {
+        margin: 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    
+        opacity: 0.8;
+        border-radius: 10rem;
+    
+        padding: 0.8rem 1.6rem;
+    
+        font-size: 1.4rem;
+        border: 0.1rem solid black;
+    
+        // background-color: #808080;
+        white-space: nowrap; // Чтобы не переносило слова на следующую строку
+    }
+    
+}
+
+.logo {
+    width: 6rem;
+    height: 6rem;
+}
+
+.App {
+    background-color: black;
+}
+
+.box_login {
+    width: 25rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        display: block;
+        font-size: 28px;
+    }
+}
+
+.vhod_form {
+    margin: 0 auto;
+    margin-top: 20rem;
+    border-radius: 15px;
+    background-color: #fff;
+    width: 40rem;
+    height: 70rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column ;
+    h2 {
+        font-size: 3rem;
+    }
+
+    .input__box {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column ;
+    }
+    img {
+        width: 20rem;
+        height: 20rem;
+    }
+    p {
+        font-size: 2rem;
+        margin: 0 auto;
+    }
+    .p_pass {
+        margin-top: 3rem;
+    }
+    input {
+        display: block;
+        border-radius: 10px;
+        width: 35rem;
+        height: 3rem;
+    }
+    button {
+        background-color: #0F0F0F00;
+        width: 15rem;
+        height: 3rem;
+        border-radius: 15px;
+    }
+
+
+}
+
+.registr_form {
+    margin: 0 auto;
+    margin-top: 20rem;
+    border-radius: 15px;
+    background-color: #fff;
+    width: 40rem;
+    height: 75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column ;
+    h2 {
+        font-size: 3rem;
+    }
+
+    .input__box {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column ;
+    }
+    img {
+        width: 20rem;
+        height: 20rem;
+    }
+    p {
+        font-size: 2rem;
+        margin: 0 auto;
+    }
+    .p_pass {
+        margin-top: 3rem;
+    }
+    input {
+        display: block;
+        border-radius: 10px;
+        width: 35rem;
+        height: 3rem;
+    }
+    button {
+        background-color: #0F0F0F00;
+        width: 15rem;
+        height: 3rem;
+        border-radius: 15px;
+    }
+
+}
+
+.button__otpravit {
+    margin-top: 3rem;
+    width: 20rem;
+    height: 4rem;
+    border-radius: 25px;
+    font-size: 3rem;
+}
+
+ 
