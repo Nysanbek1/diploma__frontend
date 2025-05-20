@@ -3,12 +3,11 @@ html {
   font-size: 10px;
 }
 body {
-  background-color: black;
+  background: linear-gradient(135deg, #0f1123, #1f2241);
 }
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Neue Haas Grotesk Display Pro";
-
+  font-family: 'Inter', sans-serif;
 }

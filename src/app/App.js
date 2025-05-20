@@ -1,5 +1,7 @@
 import './app.css';
 import logo from "../logo.svg"
+import logo2 from "../logo.png"
+
 import {useState, useEffect } from 'react';
 
 
@@ -216,6 +218,8 @@ function App() {
   })
 
   const [userInfo, setUserInfo] = useState()
+
+  const [status, setStatus] = useState()
   
  
   const toggleAllergy = (key) => {
@@ -392,9 +396,11 @@ function App() {
       console.log('Успешный вход:', result);
       console.log('Успешный вход:', result.user.login);
   
-      // Сохраняем токен
       setUser(result)
+      
       localStorage.setItem('token', result.access_token);
+      getUserData();
+      loadHistory()
       
     } catch (err) {
       console.error('Ошибка при входе:', err);
@@ -445,13 +451,7 @@ function App() {
   };
   
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      getUserData();
-      loadHistory();
-    }
-  }, []);
+  
 
   const newPlan = async () => {
     const token = localStorage.getItem('token');
@@ -502,66 +502,75 @@ const loadHistory = async () => {
   }
 };
 
-
-
-  
-  
-  
-
   return (
     <div className="App">
-      <div className='shapka'>
-        <img className='logo' src={logo} alt="logo" />
-       
-        <div className='box_login'>
-          {user ? (
-            <p>👋 Привет, {user.user?.login || 'пользователь'}</p>
-          ) : (
-            <>
-              <p>войти</p>
-              <p>/</p>
-              <p>регистрация</p>
-            </>
-          )}
-        </div>
+      <div className="shapka">
+        {user ? (
+          <div className="box_login">
+            <button onClick={() => {
+              setStatus('выход')
+            }}>выход</button>
+            <p className="greeting">👋 Привет, {user.user?.login || 'пользователь'}</p>
+          </div>
+        ) : (
+          <div className="box_login">
+            <div className="auth-buttons">
+              <button onClick={() => {
+                setStatus('вход')
+              }}>вход</button>
+              <button onClick={() => {
+                setStatus('регистрация')
+              }}>регистрация</button>
+            </div>
+          </div>
+        )}
       </div>
+
+
+      
       
       <div className='vhod_form'>
-        <img className='logo' src={logo} alt="logo" />
-        <h2>вход</h2>
-        <div className='input__box'>
-          <p>логин</p>
-          <input type="text" value={login} onChange={(e) => {
-            setLogin(e.target.value)
-          }}/>
-          <p className='p_pass'>пароль</p>
-          <input type="password" value={password} onChange={(e) => {
+        <img className='logo' src={logo2} alt="logo" />
+        <h2>Вход</h2>
+          <input
+            type="text"
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
+            placeholder="Электронная почта"
+            className="styled-input"
+          />
+          <input type="password" 
+          placeholder="пароль"
+          value={password} onChange={(e) => {
             setPassword(e.target.value)
           }}/>
-        </div>
         
         <button onClick={loginUser}>вход</button>
       </div>
 
 
       <div className='registr_form'>
-        <img className='logo' src={logo} alt="logo" />
-        <h2>регистрация</h2>
+        <img className='logo' src={logo2} alt="logo" />
+        <h2>Регистрация</h2>
         <div className='input__box'>
-          <p>логин</p>
-          <input type="text"  value={login} onChange={(e) => {
+          <input type="text"  value={login}
+          placeholder="логин"
+           onChange={(e) => {
             setLogin(e.target.value)
           }} />
-          <p className='p_pass'>email</p>
-          <input type="text"  value={email} onChange={(e) => {
+          <input type="text"  value={email}
+          placeholder="email"
+          onChange={(e) => {
             setEmail(e.target.value)
           }}/>
-          <p className='p_pass'>пароль</p>
-          <input type="password"  value={password} onChange={(e) => {
+          <input type="password"
+          placeholder="пароль"
+          value={password} onChange={(e) => {
             setPassword(e.target.value)
           }}/>
-          <p className='p_pass'>повторите пароль</p>
-          <input type="password"  value={passwordTwe} onChange={(e) => {
+          <input type="password" 
+          placeholder="повторите пароль"
+          value={passwordTwe} onChange={(e) => {
             setPasswordTwe(e.target.value)
           }}/>
           {password !== passwordTwe ? <p className='p_password'>неправильный пароль</p> : null}
@@ -576,7 +585,7 @@ const loadHistory = async () => {
           <h3 className='H3_info_user'>ваш пол</h3>
           <p className='p_variant'
           style={{
-            backgroundColor: gender === 'мужской' ? 'black' : '',
+            background: gender === 'мужской' ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
             color: gender === 'мужской' ? 'white' : ''
           }}
           onClick={() => {
@@ -584,7 +593,7 @@ const loadHistory = async () => {
           }}>мужской</p>
           <p className='p_variant' 
           style={{
-            backgroundColor: gender === 'женский' ? 'black' : '',
+            background: gender === 'женский' ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
             color: gender === 'женский' ? 'white' : ''
           }}
           onClick={() => {
@@ -632,7 +641,7 @@ const loadHistory = async () => {
                 key={key}
                 className="p_variant"
                 style={{
-                  backgroundColor: value ? 'black' : '',
+                  background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                   color: value ? 'white' : '',
                   cursor: 'pointer',
                   opacity: isConflict ? 0.5 : 1,
@@ -654,7 +663,7 @@ const loadHistory = async () => {
           <h3 className='H3_info_user'>ваш уровень физической подготовки</h3>
           <p className='p_variant'
           style={{
-            backgroundColor: physicalTraining === 'Новичок (меньше 3 месяцев занятий)' ? 'black' : '',
+            background: physicalTraining === 'Новичок (меньше 3 месяцев занятий)' ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
             color: physicalTraining === 'Новичок (меньше 3 месяцев занятий)' ? 'white' : ''
           }}
           onClick={() => {
@@ -662,7 +671,7 @@ const loadHistory = async () => {
           }}>Новичок (меньше 3 месяцев занятий)</p>
           <p className='p_variant'
           style={{
-            backgroundColor: physicalTraining === 'Средний (от 3 месяцев до 1 год)' ? 'black' : '',
+            background: physicalTraining === 'Средний (от 3 месяцев до 1 год)' ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
             color: physicalTraining === 'Средний (от 3 месяцев до 1 год)' ? 'white' : ''
           }}
           onClick={() => {
@@ -670,7 +679,7 @@ const loadHistory = async () => {
           }}>Средний (от 3 месяцев до 1 год)</p>
           <p className='p_variant'
           style={{
-            backgroundColor: physicalTraining === 'Продвинутый (более 2 лет регулярных тренировок)' ? 'black' : '',
+            background: physicalTraining === 'Продвинутый (более 2 лет регулярных тренировок)' ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
             color: physicalTraining === 'Продвинутый (более 2 лет регулярных тренировок)' ? 'white' : ''
           }}
           onClick={() => {
@@ -682,7 +691,7 @@ const loadHistory = async () => {
           <p
             className="p_variant"
             style={{
-              backgroundColor: trainingConditions.home ? 'black' : '',
+              background: trainingConditions.home ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
               color: trainingConditions.home ? 'white' : '',
             }}
             onClick={() => {
@@ -698,7 +707,7 @@ const loadHistory = async () => {
           <p
             className="p_variant"
             style={{
-              backgroundColor: trainingConditions.gym ? 'black' : '',
+              background: trainingConditions.gym ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
               color: trainingConditions.gym ? 'white' : '',
             }}
             onClick={() => {
@@ -714,7 +723,7 @@ const loadHistory = async () => {
           <p
             className="p_variant"
             style={{
-              backgroundColor: trainingConditions.street ? 'black' : '',
+              background: trainingConditions.street ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
               color: trainingConditions.street ? 'white' : '',
             }}
             onClick={() => {
@@ -736,7 +745,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -758,7 +767,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -775,7 +784,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -792,7 +801,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -809,7 +818,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -826,7 +835,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -843,7 +852,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -860,7 +869,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -877,7 +886,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -894,7 +903,7 @@ const loadHistory = async () => {
               key={key}
               className="p_variant"
               style={{
-                backgroundColor: value ? 'black' : '',
+                background: value ? 'linear-gradient(135deg, #00c9ff, #0076ff)' : '',
                 color: value ? 'white' : '',
                 cursor: 'pointer',
               }}
@@ -908,70 +917,118 @@ const loadHistory = async () => {
         <button className='button__otpravit' onClick={otpravit}>{userInfo ? 'редоактировать' : 'отправить'}</button>
         <button className='button__otpravit' onClick={newPlan}>составить план</button>
       </div>
-      <div  className='bolezn'>
-      {plan?.result?.data ? (
-        Object.entries(plan.result.data).map(([day, details]) => (
-          <div key={day} className="day-box">
-            <h2>{day}</h2>
+        {plan?.result?.data ? (
+          <div className="rezult__plan">
+            {Object.entries(plan.result.data).map(([day, details]) => (
+              <div key={day} className="day-box">
+                <h2>{day}</h2>
 
-            <h3>Тренировка</h3>
-            <ul>
-              {Array.isArray(details?.Тренировка) ? (
-                details.Тренировка.map((exercise, i) => (
-                  <li key={i}>{exercise}</li>
-                ))
-              ) : (
-                <li>Нет данных по тренировке</li>
-              )}
-            </ul>
+                <div className="osnov__box">
+                  <div className="box">
+                    <div className="h__box">
+                      <h3>🏋️‍♂️ Тренировка</h3>
+                    </div>
+                    <div className="list__box">
+                      <ul>
+                        {Array.isArray(details?.Тренировка) ? (
+                          details.Тренировка.map((exercise, i) => (
+                            <li key={i}>{exercise}</li>
+                          ))
+                        ) : (
+                          <li>Нет данных по тренировке</li>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
 
-            <h3>Питание</h3>
-            <ul>
-              {details?.Питание ? (
-                Object.entries(details.Питание).map(([meal, content], i) => (
-                  <li key={i}>
-                    <strong>{meal}:</strong> {content}
-                  </li>
-                ))
-              ) : (
-                <li>Нет данных по питанию</li>
-              )}
-            </ul>
+                  <div className="box">
+                    <div className="h__box">
+                      <h3>🍽 Питание</h3>
+                    </div>
+                    <div className="list__box">
+                      <ul>
+                        {details?.Питание ? (
+                          Object.entries(details.Питание).map(([meal, content], i) => (
+                            <li key={i}>
+                              <strong>{meal}:</strong> {content}
+                            </li>
+                          ))
+                        ) : (
+                          <li>Нет данных по питанию</li>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
 
-            <h3>Комментарии</h3>
-            <p>{details?.Комментарии || 'Комментариев нет'}</p>
+                  <div className="box">
+                    <div className="h__box">
+                      <h3>💬 Комментарий</h3>
+                    </div>
+                    <div className="list__box">
+                      <p>{details?.Комментарии || 'Комментариев нет'}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))
-      ) : (
-        <p>План не найден или не загружен</p>
-      )}
+        ) : null}
 
-      </div>
-      <div className="bolezn">
-        <h2>Прошлые планы</h2>
+
+
+      <div className="rezult__plan">
+        <h2 className='h__glav'>Прошлые планы</h2>
         {history.map((plan, index) => (
           <div key={index} className="day-box">
-            <h3>План #{plan.id}</h3>
+            <h2>План #{plan.id}</h2>
             {plan.data && Object.entries(plan.data).map(([day, details]) => (
               <div key={day}>
-                <h4>{day}</h4>
-                <p><strong>Тренировка:</strong></p>
-                <ul>
-                  {details.Тренировка?.map((ex, i) => <li key={i}>{ex}</li>)}
-                </ul>
-                <p><strong>Питание:</strong></p>
-                <ul>
-                  {details.Питание && Object.entries(details.Питание).map(([meal, content], i) => (
-                    <li key={i}><strong>{meal}:</strong> {content}</li>
-                  ))}
-                </ul>
-                <p><strong>Комментарии:</strong> {details.Комментарии}</p>
+                <h2>{day}</h2>
+                <div className="osnov__box">
+                  <div className="box">
+                    <div className="h__box">
+                      <h3>🏋️‍♂️ Тренировка</h3>
+                    </div>
+                    <div className="list__box">
+                      <ul>
+                        {Array.isArray(details?.Тренировка) && details.Тренировка.length > 0 ? (
+                          details.Тренировка.map((ex, i) => <li key={i}>{ex}</li>)
+                        ) : (
+                          <li>Нет данных по тренировке</li>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="box">
+                    <div className="h__box">
+                      <h3>🍽 Питание</h3>
+                    </div>
+                    <div className="list__box">
+                      <ul>
+                        {details?.Питание ? (
+                          Object.entries(details.Питание).map(([meal, content], i) => (
+                            <li key={i}><strong>{meal}:</strong> {content}</li>
+                          ))
+                        ) : (
+                          <li>Нет данных по питанию</li>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="box">
+                    <div className="h__box">
+                      <h3>💬 Комментарий</h3>
+                    </div>
+                    <div className="list__box">
+                      <p>{details?.Комментарии || 'Комментариев нет'}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         ))}
       </div>
-
     </div>
   );
 }

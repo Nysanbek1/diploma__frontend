@@ -1,12 +1,58 @@
+.App {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #0f1123, #1f2241);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
 .shapka {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 7rem;
-  width: 100%;
-  background-color: #fff;
+  width: 100vw;
+  background: linear-gradient(135deg, #00c9ff, #0076ff);
+  display: flex;
+  align-items: center;
+  padding: 0 15rem;
+  border-radius: 0 0 15px 15px;
+  z-index: 10;
+  justify-content: flex-start;
+}
+
+.box_login {
   display: flex;
   justify-content: space-between;
-  padding: 0 4rem 0 4rem;
   align-items: center;
-  border-radius: 0 0 15px 15px;
+  width: 100%;
+}
+.box_login .auth-buttons {
+  display: flex;
+  gap: 2rem;
+}
+.box_login button {
+  margin-right: 5rem;
+  width: 12rem;
+  height: 4rem;
+  background: linear-gradient(to right, #53377a, #0078ff);
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.box_login button:hover {
+  background: linear-gradient(to right, #0078ff, #53377a);
+  transform: scale(1.05);
+}
+.box_login .greeting {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: white;
 }
 
 .p_password {
@@ -14,7 +60,7 @@
 }
 
 .bolezn {
-  background-color: rgb(230, 230, 230);
+  background-color: #fff;
   width: 98%;
   min-height: 98rem;
   margin: 0 auto;
@@ -24,13 +70,27 @@
   padding: 7rem;
 }
 .bolezn .int_info {
+  border: 3px solid transparent;
+  border-radius: 0.5rem;
+  background-image: linear-gradient(white, white), linear-gradient(135deg, #00c9ff, #0076ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border: linear-gradient(135deg, #00c9ff, #0076ff);
   width: 20rem;
   height: 3rem;
-  border: 0.1rem solid black;
-  border-radius: 10rem;
-  font-size: 2.4rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  transition: 0.3s;
   text-align: center;
   -moz-appearance: textfield;
+}
+.bolezn .int_info:focus {
+  outline: none;
+  border-color: #00c9ff;
+  box-shadow: 0 0 0 3px rgba(0, 201, 255, 0.2);
 }
 .bolezn .int_info::-webkit-outer-spin-button, .bolezn .int_info::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -48,13 +108,13 @@
   border-radius: 10rem;
   padding: 0.8rem 1.6rem;
   font-size: 1.4rem;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #0076ff;
   white-space: nowrap;
 }
 
 .logo {
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .App {
@@ -65,7 +125,7 @@
   width: 25rem;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 .box_login p {
@@ -73,13 +133,28 @@
   font-size: 28px;
 }
 
+.vhod_form button {
+  background: linear-gradient(135deg, #00c9ff, #0076ff);
+  color: white;
+  font-weight: bold;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 120, 255, 0.2);
+}
+.vhod_form button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 120, 255, 0.4);
+}
+
 .vhod_form {
   margin: 0 auto;
   margin-top: 20rem;
   border-radius: 15px;
   background-color: #fff;
-  width: 40rem;
-  height: 70rem;
+  width: 50rem;
+  height: 50rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -95,27 +170,41 @@
   flex-direction: column;
 }
 .vhod_form img {
-  width: 20rem;
-  height: 20rem;
-}
-.vhod_form p {
-  font-size: 2rem;
-  margin: 0 auto;
-}
-.vhod_form .p_pass {
-  margin-top: 3rem;
+  width: 15rem;
+  height: 15rem;
 }
 .vhod_form input {
-  display: block;
-  border-radius: 10px;
+  margin-top: 2rem;
   width: 35rem;
   height: 3rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+.vhod_form input:focus {
+  outline: none;
+  border-color: #00c9ff;
+  box-shadow: 0 0 0 3px rgba(0, 201, 255, 0.2);
 }
 .vhod_form button {
-  background-color: rgba(15, 15, 15, 0);
-  width: 15rem;
-  height: 3rem;
-  border-radius: 15px;
+  width: 16rem;
+  height: 5rem;
+  background: linear-gradient(to right, #00c9ff, #0078ff);
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 3rem;
+}
+.vhod_form button:hover {
+  background: linear-gradient(to right, #00aacc, #0060d0);
+  transform: scale(1.02);
 }
 
 .registr_form {
@@ -123,8 +212,8 @@
   margin-top: 20rem;
   border-radius: 15px;
   background-color: #fff;
-  width: 40rem;
-  height: 75rem;
+  width: 50rem;
+  height: 60rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -140,8 +229,8 @@
   flex-direction: column;
 }
 .registr_form img {
-  width: 20rem;
-  height: 20rem;
+  width: 15rem;
+  height: 15rem;
 }
 .registr_form p {
   font-size: 2rem;
@@ -151,22 +240,141 @@
   margin-top: 3rem;
 }
 .registr_form input {
-  display: block;
-  border-radius: 10px;
+  margin-top: 2rem;
   width: 35rem;
   height: 3rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+.registr_form input:focus {
+  outline: none;
+  border-color: #00c9ff;
+  box-shadow: 0 0 0 3px rgba(0, 201, 255, 0.2);
 }
 .registr_form button {
-  background-color: rgba(15, 15, 15, 0);
-  width: 15rem;
-  height: 3rem;
-  border-radius: 15px;
+  width: 16rem;
+  height: 5rem;
+  background: linear-gradient(to right, #00c9ff, #0078ff);
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 3rem;
+}
+.registr_form button:hover {
+  background: linear-gradient(to right, #00aacc, #0060d0);
+  transform: scale(1.02);
 }
 
 .button__otpravit {
-  margin-top: 3rem;
-  width: 20rem;
-  height: 4rem;
-  border-radius: 25px;
-  font-size: 3rem;
+  margin: 2rem;
+  border-radius: 50px;
+  width: 16rem;
+  height: 5rem;
+  background: linear-gradient(to right, #00c9ff, #0078ff);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.button__otpravit:hover {
+  background: linear-gradient(to right, #00aacc, #0060d0);
+  transform: scale(1.02);
+}
+
+.rezult__plan {
+  width: 98%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #f7f9fc;
+}
+.rezult__plan .h__glav {
+  font-size: 3.6rem;
+}
+.rezult__plan .day-box {
+  background-color: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  line-height: 1.6;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.rezult__plan .day-box h2 {
+  color: #0055ff;
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+.rezult__plan .day-box h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+.rezult__plan .day-box ul {
+  padding-left: 1.5rem;
+}
+.rezult__plan .day-box ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+}
+.rezult__plan .day-box p {
+  margin-top: 0.5rem;
+}
+.rezult__plan .day-box .osnov__box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 900px) {
+  .rezult__plan .day-box .osnov__box {
+    grid-template-columns: 1fr;
+  }
+}
+.rezult__plan .day-box .osnov__box .box {
+  background: #f8fbfd;
+  border: 1px solid #0060d0;
+  border-radius: 0.8rem;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 100%;
+}
+.rezult__plan .day-box .osnov__box .box .h__box {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #000;
+  border-bottom: 0.2rem solid #00aacc;
+  padding-bottom: 0.5rem;
+}
+.rezult__plan .day-box .osnov__box .box .list__box {
+  padding-left: 1rem;
+}
+.rezult__plan .day-box .osnov__box .box .list__box ul,
+.rezult__plan .day-box .osnov__box .box .list__box p {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 1.5rem;
+}
+.rezult__plan .day-box .osnov__box .box .list__box ul li,
+.rezult__plan .day-box .osnov__box .box .list__box p li {
+  list-style-type: disc;
+  margin-bottom: 0.4rem;
+}
+.rezult__plan .day-box .osnov__box .box .list__box p {
+  font-size: 1.5rem;
 }/*# sourceMappingURL=app.css.map */
